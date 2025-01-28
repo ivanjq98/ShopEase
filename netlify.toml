@@ -2,6 +2,7 @@
   base = "frontend"
   command = "npm run build"
   publish = "frontend/build"
+  functions = "netlify/functions"
 
 [[redirects]]
   from = "/api/*"
