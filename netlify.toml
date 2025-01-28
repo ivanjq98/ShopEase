@@ -9,3 +9,7 @@
 
 [dev]
   port = 3000
+  functions = "netlify/functions"
+
+[context.production.environment]
+  NODE_ENV = "production"
