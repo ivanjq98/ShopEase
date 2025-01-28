@@ -1,0 +1,5 @@
+Command Prompt
+npx create-react-app .
+
+References
+reactrouter.com 
