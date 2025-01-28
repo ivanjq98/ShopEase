@@ -37,8 +37,6 @@ const port = process.env.PORT || 5000;
 
 // Check if MongoDB URI is defined
 
-// DB_URI = mongodb+srv://tanivancjq:tanivancjq@cluster0.ghdljwq.mongodb.net/e-commerce?retryWrites=true&w=majority&appName=Cluster0
-
 if (!uri) {
   console.error("DB_URI is not defined in the .env file.");
   process.exit(1);
