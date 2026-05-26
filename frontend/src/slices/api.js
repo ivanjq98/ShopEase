@@ -1,13 +1,12 @@
-// src/slices/api.js
-import config from "../config";
-
-export const url = config.apiUrl;
+export const url = process.env.BACKEND_URL
 
 export const setHeaders = () => {
   const token = localStorage.getItem("token");
-  return {
+  const headers = {
     headers: {
-      "x-auth-token": token || "",
+      "x-auth-token": token,
     },
   };
+
+  return headers;
 };
