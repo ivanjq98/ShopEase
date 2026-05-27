@@ -1,4 +1,4 @@
-export const url = "https://shopease-2-19yq.onrender.com/api"
+export const url = "https://shopease-1-5tkn.onrender.com"
 
 export const setHeaders = () => {
   const token = localStorage.getItem("token");
