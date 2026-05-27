@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Fixed: Unified routing imports
 import { addToCart } from "../slices/cartSlice";
-// import { useGetAllProductsQuery } from "../slices/productsApi";
 
 const Home = () => {
-  const { items: data, status } = useSelector((state) => state.products);
+  // Added fallback empty array to items to prevent map crashes
+  const { items: data = [], status } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const { data, error, isLoading } = useGetAllProductsQuery();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
@@ -22,29 +19,29 @@ const Home = () => {
         <>
           <h2>New Arrivals</h2>
           <div className="products">
-            {data &&
-              data?.map((product) => (
-                <div key={product._id} className="product">
-                  <h3>{product.name}</h3>
-                  <Link to={"/product/" + product._id}>
-                    <img src={product.image?.url} alt={product.name} />
-                  </Link>
+            {data.map((product) => (
+              <div key={product._id} className="product">
+                <h3>{product.name}</h3>
+                {/* Dynamically links to the specific product details page */}
+                <Link to={`/product/${product._id}`}>
+                  <img src={product.image?.url} alt={product.name} />
+                </Link>
 
-                  <div className="details">
-                    <span>{product.desc}</span>
-                    <span className="price">${product.price}</span>
-                  </div>
-                  <button onClick={() => handleAddToCart(product)}>
-                    Add To Cart
-                  </button>
+                <div className="details">
+                  <span>{product.desc}</span>
+                  <span className="price">${product.price}</span>
                 </div>
-              ))}
+                <button onClick={() => handleAddToCart(product)}>
+                  Add To Cart
+                </button>
+              </div>
+            ))}
           </div>
         </>
       ) : status === "pending" ? (
         <p>Loading...</p>
       ) : (
-        <p>Unexpected error occured...</p>
+        <p>Unexpected error occurred...</p>
       )}
     </div>
   );
