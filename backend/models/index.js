@@ -1,6 +1,6 @@
 const { User } = require("./user");
-const { Product } = require("./Product");
-const { Order } = require("./Order");
+const { Product } = require("./product");
+const { Order } = require("./order");
 
 console.log("✅ All models loaded successfully");
 
